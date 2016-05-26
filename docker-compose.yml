@@ -1,0 +1,38 @@
+redis:
+  image: sutoiku/redis
+  user: stoic
+  ports:
+    - "6379:6379"
+  command: redis-server
+
+
+# test:
+#   build: ./dockers/node
+#   volumes:
+#     - ../test:/app
+#   working_dir: /app
+#   ports:
+#     - "8080:8080"
+#   links:
+#     - rabbitmq
+#   environment:
+#     NODE_ENV: development
+
+# rabbitmq:
+#   # build: ./dockers/rabbitmq
+#   image: gonkulatorlabs/rabbitmq:latest
+#   ports:
+#     - "5672:5672"
+#     - "15672:15672"
+  # environment:
+
+# kafka:
+#   image: spotify/kafka
+#   ports:
+#     - "9092:9092"
+#     - "2181:2181"
+#   environment:
+#     KAFKA_ADVERTISED_HOST: HOSTIP
+#     KAFKA_ADVERTISED_PORT: 9092
+#     KAFKA_CREATE_TOPICS: "test:1:1"
+
