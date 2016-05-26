@@ -1,4 +1,15 @@
-redis:
+tasks:
+  image: iron/go:dev
+  volumes:
+    - $GOPATH:/go
+  working_dir: /go/src/github.com/oppsio/tasks
+  links:
+    - redis
+  command: /bin/sh -c "go build -o ./bin/tasks github.com/oppsio/tasks"
+  environment:
+    OPPSIO_ENV: development
+
+redis:  
   image: sutoiku/redis
   user: stoic
   ports:
@@ -12,18 +23,6 @@ postgres:
   volumes:
     - "pgdata:/var/lib/postgresql/data"
 
-
-# test:
-#   build: ./dockers/node
-#   volumes:
-#     - ../test:/app
-#   working_dir: /app
-#   ports:
-#     - "8080:8080"
-#   links:
-#     - rabbitmq
-#   environment:
-#     NODE_ENV: development
 
 # rabbitmq:
 #   # build: ./dockers/rabbitmq
