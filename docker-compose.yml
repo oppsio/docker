@@ -5,6 +5,13 @@ redis:
     - "6379:6379"
   command: redis-server
 
+postgres:
+  image: kiasaki/alpine-postgres
+  ports:
+    - "5432:5432"
+  volumes:
+    - "pgdata:/var/lib/postgresql/data"
+
 
 # test:
 #   build: ./dockers/node
